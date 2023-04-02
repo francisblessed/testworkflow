@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: $DIR_OF_CHOICE
+        working-directory: ./
         shell: bash
     steps:
       - name : Checkout
