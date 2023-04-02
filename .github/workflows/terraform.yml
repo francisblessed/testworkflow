@@ -1,0 +1,26 @@
+on:
+  - push
+jobs:
+  terraform-workflow:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: $DIR_OF_CHOICE
+        shell: bash
+    steps:
+      - name : Checkout
+        uses:     actions/checkout@v1
+      - name : Set Terraform
+        uses:     hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.1.9
+      - name: Terraform initializing
+        run: terraform init
+      - name: Terraform validate
+        run: terraform validate
+      - name: Terraform Plan
+        run: terraform plan
+      - name: Terraform apply
+        run: terraform apply -auto-approve
+      - name: Terraform destroy
+        run: terraform destroy -auto-approve
